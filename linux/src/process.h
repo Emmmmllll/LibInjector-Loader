@@ -1,15 +1,22 @@
 #pragma once
 namespace LibMemory{
     class Library;
+
     class Process{
     protected:
-        unsigned int pid = 0;
+        int pid;
     public:
-        Process(const char *procName);
+        Process(int pid);
         Process();
         ~Process();
         
-        void open(const char *procName);
+        static Process open(const char *procName, unsigned int index = 0);
+        static Process openFirst(const char *procName);
+        Process openNext(const char *procName) const;
+        static Process openLast(const char *procName);
+        int sig(int signal) const;
+        int getpid() const;        
+
         void close();
 
         bool inject(Library& lib);

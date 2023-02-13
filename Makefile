@@ -9,7 +9,7 @@ MACOSCOMPILER =
 
 linux:
 	cd linux/src; ${LINUXCOMPILER} -o ../lib${LIBNAME}.so ${LIBSRC} -shared -fpic -Wall -Werror
-	cd linux/src; ${LINUXCOMPILER} -o ../${CLINAME} ${CLISRC} -Wall -Werror
+	cd linux/src; ${LINUXCOMPILER} -o ../${CLINAME} ${CLISRC} -llibmemory -Wall -Werror -L..
 
 windows:
 
